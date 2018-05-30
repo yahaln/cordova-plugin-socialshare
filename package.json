@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-socialshare",
+  "version": "1.0.0",
+  "description": "社会化分享插件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yahaln",
+  "license": "ISC",
+  "cordova": {
+    "id": "cordova-plugin-socialshare",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "share","wechat","wechatShare","QQShare","QQ","SocialShare"
+  ],
+  "homepage": ""
+}

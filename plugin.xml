@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-socialshare" version="1.0.0"
+ xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+ xmlns:android="http://schemas.android.com/apk/res/android">
+ 
+	<name>SocialShare</name>
+	<keywords>cordova,wechatShare,share,qqShare</keywords>
+    <repo></repo>
+    <issue></issue>	
+    <!-- <preference name="WECHAT_APPID" value="YOUR_WECHAT_APP_ID_HERE" /> -->
+    <preference name="WECHAT_APPID" />
+	    <!-- <preference name="QQ_APPID" value="YOUR_QQ_APP_ID_HERE" /> -->
+    <preference name="QQ_APPID" />
+	
+	<js-module name="SocialShare" src="www/SocialShare.js">
+		<clobbers target="cordova.plugins.SocialShare" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+		<feature name="SocialShare">
+			<param name="android-package" value="com.yahaln.share.SocialShare" />
+		</feature>
+		</config-file>
+			<config-file parent="/*" target="AndroidManifest.xml">
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest">  
+            <!-- Required  一些系统要求的权限，如访问网络等-->  
+            <uses-permission android:name="android.permission.INTERNET"/>  
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> 
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+			<uses-permission android:name="android.permission.READ_PHONE_STATE"/> 
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> 
+			
+        </config-file> 
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		
+		<activity
+		android:name="com.tencent.tauth.AuthActivity"
+		android:launchMode="singleTask"
+		android:noHistory="true">
+		<intent-filter>
+			<action android:name="android.intent.action.VIEW" />
+			<category android:name="android.intent.category.DEFAULT" />
+			<category android:name="android.intent.category.BROWSABLE" />
+			<data android:scheme="$QQ_APPID" />
+		</intent-filter>
+		</activity>
+		<activity          
+			android:name="com.tencent.connect.common.AssistActivity"         
+			android:configChanges="orientation|keyboardHidden|screenSize"           
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+		</activity>
+		
+		
+		
+			<meta-data android:name="WechatAppid" android:value="$WECHAT_APPID"></meta-data>
+			<meta-data android:name="QQAppid" android:value="$QQ_APPID"></meta-data>
+		</config-file>
+		
+		<source-file src="src/android/SocialShare.java" target-dir="src/com/yahaln/share" />
+		<source-file src="src/android/ShareResultListenerImpl.java" target-dir="src/com/yahaln/share" />
+		<source-file src="src/android/WXShareManager.java" target-dir="src/com/yahaln/share" />
+		<source-file src="src/android/IUiListenerImpl.java" target-dir="src/com/yahaln/share" />
+		
+		<lib-file src="src/android/libs/open_sdk_r6008_lite.jar"/>
+		
+		<framework src="com.android.support:support-annotations:26.1.0" />
+		<framework src="com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+" />
+	</platform>
+</plugin>
