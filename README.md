@@ -19,6 +19,9 @@ cordova plugin rm cordova-plugin-socialshare;
 ```
 # 使用方法
 
+注：微信分享'type'参数值：'friend'：好友,'session':朋友圈,'favourite':收藏
+
+
 （1）分享文字
 ```
     	function shareText(){
@@ -62,7 +65,7 @@ cordova plugin rm cordova-plugin-socialshare;
     	function shareWebPage(){
     		var shareOptions={};
     		shareOptions["title"]="测试";
-    		shareOptions["webPageUrl"]="http://www.baidu.com";
+    		shareOptions["webPageUrl"]="https://github.com/yahaln/cordova-plugin-socialshare.git";
     		shareOptions["imageUrl"]="http://img.zcool.cn/community/010f87596f13e6a8012193a363df45.jpg@1280w_1l_2o_100sh.jpg";
     		shareOptions["description"]="测试描述";
     		shareOptions["type"]="friend";
@@ -81,7 +84,7 @@ cordova plugin rm cordova-plugin-socialshare;
     	function QQshareTextImage(){
     		var shareOptions={};
     		shareOptions["title"]="测试";
-    		shareOptions["targetUrl"]="http://www.baidu.com";
+    		shareOptions["targetUrl"]="https://github.com/yahaln/cordova-plugin-socialshare.git";
     		shareOptions["imageUrl"]="http://img.zcool.cn/community/010f87596f13e6a8012193a363df45.jpg@1280w_1l_2o_100sh.jpg";
     		shareOptions["summary"]="测试描述";
 
@@ -94,12 +97,12 @@ cordova plugin rm cordova-plugin-socialshare;
     		});
     	}
 ```
-（4）QQ空间分享图文
+（5）QQ空间分享图文
 ```
     	function QQZoneShareTextImage(){
     		var shareOptions={};
     		shareOptions["title"]="测试";
-    		shareOptions["targetUrl"]="http://www.baidu.com";
+    		shareOptions["targetUrl"]="https://github.com/yahaln/cordova-plugin-socialshare.git";
     		shareOptions["imageUrl"]="http://img.zcool.cn/community/010f87596f13e6a8012193a363df45.jpg@1280w_1l_2o_100sh.jpg";
     		shareOptions["summary"]="测试描述";
 
@@ -114,11 +117,14 @@ cordova plugin rm cordova-plugin-socialshare;
 ```
 # ionic V2/v3使用方法
 
-(1)复制cordova-plugin-share/wechatshare文件夹到node_modules/@ionic-native文件夹下
+(1)安装native插件
+```
+npm install git+https://github.com/yahaln/socialshare-ionic-native.git
 
+```
 (2)app.modules.ts中添加引用
 ```
- import {WechatShare} from "@ionic-native/wechatshare";
+ import {SocialShare} from "@ionic-native/socialshare";
 	
  @NgModule({
   declarations: [
@@ -136,7 +142,7 @@ cordova plugin rm cordova-plugin-socialshare;
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 	....
-    WechatShare
+    SocialShare
   ]
 })
 export class AppModule {}
@@ -145,7 +151,7 @@ export class AppModule {}
 (3)页面中使用方法
 
 ```
-import {WechatShare} from "@ionic-native/wechatshare";
+import {SocialShare} from "@ionic-native/socialshare";
 
 @IonicPage()
 @Component({
@@ -154,7 +160,7 @@ import {WechatShare} from "@ionic-native/wechatshare";
 })
 export class MinePage {
 
-  constructor(public navCtrl: NavController,private wechatShare:WechatShare) {
+  constructor(public navCtrl: NavController,private mSocialShare:SocialShare) {
   
   }
   
@@ -164,7 +170,7 @@ export class MinePage {
 	shareOptions["shareText"]="测试内容";
 	shareOptions["description"]="测试描述";
 	shareOptions["type"]="friend";
-	this.wechatShare.wechatShareText(shareOptions)
+	this.mSocialShare.wechatShareText(shareOptions)
 	.then(data=>{
 		this.tipsService.showInfo("分享成功！");
 	}).catch(err=>{
