@@ -62,9 +62,9 @@
 		<source-file src="src/android/WXShareManager.java" target-dir="src/com/yahaln/share" />
 		<source-file src="src/android/IUiListenerImpl.java" target-dir="src/com/yahaln/share" />
 		
+		<lib-file src="src/android/libs/wechat-sdk-android-with-mta-5.1.4.jar"/>
 		<lib-file src="src/android/libs/open_sdk_r6008_lite.jar"/>
 		
 		<framework src="com.android.support:support-annotations:26.1.0" />
-		<framework src="com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+" />
 	</platform>
 </plugin>

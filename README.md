@@ -31,7 +31,7 @@ cordova plugin rm cordova-plugin-socialshare;
     		shareOptions["description"]="测试描述";
     		shareOptions["type"]="friend";
     		
-    		window.cordova.plugins.SharePlugin.wechatShareText(shareOptions,function(success){
+    		window.cordova.plugins.SocialShare.wechatShareText(shareOptions,function(success){
     			console.log("成功：");
     			console.log(success);
     		},function(err){
@@ -51,7 +51,7 @@ cordova plugin rm cordova-plugin-socialshare;
     		shareOptions["description"]="测试描述";
     		shareOptions["type"]="friend";
 
-    		window.cordova.plugins.SharePlugin.wechatShareImage(shareOptions,function(success){
+    		window.cordova.plugins.SocialShare.wechatShareImage(shareOptions,function(success){
     			console.log("成功：");
     			console.log(success);
     		},function(err){
@@ -70,7 +70,7 @@ cordova plugin rm cordova-plugin-socialshare;
     		shareOptions["description"]="测试描述";
     		shareOptions["type"]="friend";
 
-    		window.cordova.plugins.SharePlugin.wechatShareWebPage(shareOptions,function(success){
+    		window.cordova.plugins.SocialShare.wechatShareWebPage(shareOptions,function(success){
     			console.log("成功：");
     			console.log(success);
     		},function(err){
